@@ -50,6 +50,11 @@ public class Ball : MonoBehaviour
         rb.AddForce(force);
     }
 
+
+
+
+    //примеры коллизий
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision Enter!"); //Произошла коллизия
