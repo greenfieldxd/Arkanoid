@@ -31,6 +31,8 @@ public class Block : MonoBehaviour
 
         if (strength == 0)
         {
+            GameManager gm = FindObjectOfType<GameManager>();
+            gm.AddScore(scoreBlock);
             Destroy(gameObject);
         }
         else

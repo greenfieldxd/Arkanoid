@@ -46,9 +46,11 @@ public class Ball : MonoBehaviour
 
     private void LaunchBall()
     {
-        Vector2 force = new Vector2(speedBall, speedBall);
+        
+        Vector2 force = new Vector2(Random.Range(-1f, 1f), 1).normalized * speedBall;
         rb.AddForce(force);
     }
+
 
 
 
@@ -60,10 +62,7 @@ public class Ball : MonoBehaviour
         Debug.Log("Collision Enter!"); //Произошла коллизия
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        Debug.Log("Collision Exit!"); //Вышло из коллизии
-    }
+   
 
     private void OnCollisionStay2D(Collision2D collision)
     {
