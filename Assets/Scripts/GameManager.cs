@@ -6,25 +6,51 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public int score = 0;
+    bool pauseActive = false;
     public Text textScore;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        GameManager[] gameManagers = FindObjectsOfType<GameManager>();
+        if (gameManagers.Length > 1)
+        {
+            Destroy(gameObject);
+            gameObject.SetActive(false);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
+        textScore.text = "Score: 0";
 
-        
+        DontDestroyOnLoad(gameObject);
     }
 
-    public void AddScore(int value)
+    private void Update()
     {
-        score = score + value;
-        textScore.text = "Score: " + score;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseActive)
+            {
+                //turn off Pause
+                Time.timeScale = 1;
+                pauseActive = false;
+            }
+            else
+            {
+                //turn on Pause
+                Time.timeScale = 0;
+                pauseActive = true; //надо сделать чтобы платформа тоже не двигалась
+            }
+        }
+    }
+
+
+
+
+    public void AddScore(int score) // функция добавляет нашему Score значение, которое мы ему передаем
+    {
+        this.score += score;
+        textScore.text = "Score: " + this.score; // выводит на сцену измененный Score
     }
 }

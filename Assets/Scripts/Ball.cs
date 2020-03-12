@@ -24,7 +24,7 @@ public class Ball : MonoBehaviour
         if (started)
         {
             //ничего не делаем
-            Debug.Log(rb.velocity.magnitude);  //сколько юнитов в секунду пролетает мяч
+            //Debug.Log(rb.velocity.magnitude);  //сколько юнитов в секунду пролетает мяч
         }
         else
         {
@@ -57,33 +57,33 @@ public class Ball : MonoBehaviour
 
     //примеры коллизий
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Collision Enter!"); //Произошла коллизия
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log("Collision Enter!"); //Произошла коллизия
+    //}
 
    
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        Debug.Log("Collision Stay!"); //В коллизии
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    Debug.Log("Collision Stay!"); //В коллизии
+    //}
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
 
-        Debug.Log("Trigger Enter"); // Свойство коллайдера (триггер)
-    }
+    //    Debug.Log("Trigger Enter"); // Свойство коллайдера (триггер)
+    //}
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
+    //private void OnTriggerExit2D(Collider2D collision)
+    //{
 
-        Debug.Log("Trigger Exit!"); // Свойство коллайдера (триггер)
-    }
+    //    Debug.Log("Trigger Exit!"); // Свойство коллайдера (триггер)
+    //}
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
+    //private void OnTriggerStay2D(Collider2D collision)
+    //{
 
-        Debug.Log("Trigger Stay!"); // Свойство коллайдера (триггер)
-    }
+    //    Debug.Log("Trigger Stay!"); // Свойство коллайдера (триггер)
+    //}
 
 }

@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Ground : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    SceneLoader sceneLoader;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(sceneIndex);// индекс задал со сцены, перезагружаю сцену после касания земли
-
+        sceneLoader = FindObjectOfType<SceneLoader>();
+        sceneLoader.RestartScene();
     }
+    
 }

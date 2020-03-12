@@ -12,10 +12,16 @@ public class Block : MonoBehaviour
     public int strength; //задаем силу блока (0, 1, 2)
     public int scoreBlock;// очки за блок
 
+    LevelManager levelManager;
+    GameManager gm; // Наш GameManager, чтобы использовать его функции
+
 
 
     public void Start()
     {
+        levelManager = FindObjectOfType<LevelManager>();
+        gm = FindObjectOfType<GameManager>();
+        levelManager.AddBlockCount(); //Добавляем блок в наш LevelManager в переменную blocksNumber
         scoreBlock = strength + 1;  //очки завны силе блока + 1 (например: сила 2, очки за блок 3 , т.к. разбивается с 3 ударов)
         ChangeSprite(spriteLevel.Length - 1); // Берем sprite блока со сцены (целый)
     }
@@ -31,9 +37,8 @@ public class Block : MonoBehaviour
 
         if (strength == 0)
         {
-            GameManager gm = FindObjectOfType<GameManager>();
-            gm.AddScore(scoreBlock);
-            Destroy(gameObject);
+            gm.AddScore(scoreBlock); // вызываем функцию из GameManager
+            DestroyBlock();
         }
         else
         {
@@ -41,5 +46,12 @@ public class Block : MonoBehaviour
             ChangeSprite(strength);
 
         }
+    }
+
+    private void DestroyBlock() //Функция уничтожение блока
+    {
+        Destroy(gameObject);
+
+        levelManager.RemoveBlockCount(); //Удаляем блок в нашем GameManager из переменной blocksNumber
     }
 }
