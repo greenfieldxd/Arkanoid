@@ -29,6 +29,7 @@ public class LevelManager : MonoBehaviour
         if (blocksNumber <= 0)
         {
             sceneLoader.LoadNextLevel(); //Load next Scene
+            
         }
     }
 }

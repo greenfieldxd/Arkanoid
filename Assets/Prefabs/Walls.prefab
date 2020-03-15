@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4191710138883110299}
-  - component: {fileID: 4191710138883110298}
+  - component: {fileID: 4586906987436058840}
   m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
@@ -31,8 +31,8 @@ Transform:
   m_Father: {fileID: 4191710139070539445}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &4191710138883110298
-BoxCollider2D:
+--- !u!60 &4586906987436058840
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -3.5195036, y: 0.019171715}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -54,9 +54,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.90737724, y: 13.945822}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -3.9703684, y: 6.993191}
+      - {x: -3.9277382, y: 0.24568307}
+      - {x: -3.9599571, y: -6.9701877}
+      - {x: -2.6160936, y: -7.0013795}
+      - {x: -3.062995, y: 6.9988766}
 --- !u!1 &4191710139070539446
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +140,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.0066990852}
+  m_Offset: {x: -1.0291986, y: -0.0066986084}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -147,7 +151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 24.886673}
+  m_Size: {x: 3.0583978, y: 24.886673}
   m_EdgeRadius: 0
 --- !u!114 &4191710139163984323
 MonoBehaviour:
@@ -170,7 +174,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4191710139673286658}
-  - component: {fileID: 4191710139673286657}
+  - component: {fileID: 2673917739159331609}
   m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
@@ -192,8 +196,8 @@ Transform:
   m_Father: {fileID: 4191710139070539445}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &4191710139673286657
-BoxCollider2D:
+--- !u!60 &2673917739159331609
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -205,7 +209,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.009870768}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -215,9 +219,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 14.011494}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.4932537, y: 7.0153704}
+      - {x: -0.5245228, y: 0.40342987}
+      - {x: -0.5348072, y: -6.980786}
+      - {x: 0.49807262, y: -6.9933324}
+      - {x: 0.4974079, y: 7.0148335}
 --- !u!1 &4191710140269268879
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +235,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4191710140269268878}
-  - component: {fileID: 4191710140269268877}
+  - component: {fileID: 286314462526586785}
   m_Layer: 0
   m_Name: Top
   m_TagString: Untagged
@@ -249,8 +257,8 @@ Transform:
   m_Father: {fileID: 4191710139070539445}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!61 &4191710140269268877
-BoxCollider2D:
+--- !u!60 &286314462526586785
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -262,7 +270,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01783055, y: -0.10698366}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -272,6 +280,11 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.9643389, y: 24.896526}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.49533325, y: 12.336593}
+      - {x: -0.43964487, y: 12.34388}
+      - {x: -0.031091232, y: -0.12563027}
+      - {x: -0.43305975, y: -12.542738}
+      - {x: 0.49922568, y: -12.554889}
+      - {x: 0.5001107, y: -12.563757}

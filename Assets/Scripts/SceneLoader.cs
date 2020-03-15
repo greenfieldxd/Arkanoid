@@ -17,6 +17,11 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void LoadEndScene()
+    {
+        SceneManager.LoadScene("EndScene");
+    }
+
     public void RestartScene()
     {
         int activeSceneIndex = SceneManager.GetActiveScene().buildIndex; // Нашли индекс активной сцены

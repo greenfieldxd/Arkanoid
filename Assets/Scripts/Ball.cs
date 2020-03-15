@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour
 {
     public float speedBall;
 
-    bool started;
+    public bool started;
     Platform platform;
     Rigidbody2D rb;
 
@@ -35,7 +35,7 @@ public class Ball : MonoBehaviour
     private void LockBallToPlatform()
     {
         //двигаться с платформой
-        transform.position = new Vector3(platform.transform.position.x, transform.position.y, 0);
+        transform.position = new Vector3(platform.transform.position.x, platform.transform.position.y + 0.6f, 0);
         if (Input.GetMouseButtonDown(0))
         {
             //Запуск мяча
