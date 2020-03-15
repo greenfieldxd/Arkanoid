@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Platform platform = FindObjectOfType<Platform>();// Нашли платформу на сцене
-        platform.platformIsActive = true; // вкдючили движение с мышью
 
         imagePause.gameObject.SetActive(false);
         gameResult = true;

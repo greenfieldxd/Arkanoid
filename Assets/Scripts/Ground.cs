@@ -9,6 +9,7 @@ public class Ground : MonoBehaviour
     GameManager gm;
     Ball ball;
     Rigidbody2D rbBall;
+    Platform platform;
 
 
     private void Start()

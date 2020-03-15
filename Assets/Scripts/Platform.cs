@@ -9,7 +9,11 @@ public class Platform : MonoBehaviour
     public bool platformIsActive;
 
 
-    // Update is called once per frame
+    private void Start()
+    {
+        platformIsActive = true; //При старте сцены платформа активна
+    }
+
     void Update()
     {
         PlatformTransform(platformIsActive); // Проверка на движение платформы с мышью

@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     int blocksNumber;
     SceneLoader sceneLoader;
+    Platform platform;
 
     
     void Start()
@@ -29,7 +30,8 @@ public class LevelManager : MonoBehaviour
         if (blocksNumber <= 0)
         {
             sceneLoader.LoadNextLevel(); //Load next Scene
-            
+
+
         }
     }
 }
