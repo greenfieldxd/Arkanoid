@@ -6,7 +6,6 @@ public class LevelManager : MonoBehaviour
 {
     int blocksNumber;
     SceneLoader sceneLoader;
-    Platform platform;
 
     
     void Start()

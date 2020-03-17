@@ -8,18 +8,31 @@ public class Platform : MonoBehaviour
     public float maxX;
     public bool platformIsActive;
 
+    GameManager gm;//Геймменеджер
+    Ball ball;//Мяч
+
 
     private void Start()
     {
         platformIsActive = true; //При старте сцены платформа активна
+        gm = FindObjectOfType<GameManager>();//Нашли геймменеджер
+        ball = FindObjectOfType<Ball>();//Мяч на сцене
     }
 
     void Update()
     {
-        PlatformTransform(platformIsActive); // Проверка на движение платформы с мышью
+
+        if (gm.autoPlay && ball.IsStarted())
+        {
+            MoveWithBall();
+        }
+        else
+        {
+            PlatformTransform(platformIsActive); // Проверка на движение платформы с мышью
+        }
     }
 
-    public void PlatformTransform(bool isActive)
+    void PlatformTransform(bool isActive)
     {
         if (isActive)
         {
@@ -33,6 +46,12 @@ public class Platform : MonoBehaviour
 
             transform.position = new Vector3(clampedPlatformX, yPlatform, 0);
         }
+    }
+
+
+    void MoveWithBall() //Двигаться за мячом
+    {    
+            transform.position = new Vector3(ball.transform.position.x, transform.position.y, 0); 
     }
 
 }

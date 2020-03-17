@@ -5,13 +5,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int score = 0;
+    public int score = 0; //очки
     bool pauseActive = false;//активность паузы
     public Image imagePause;// картинка паузы
     public Text textScore;  //набранные очки
     public Image[] imageLives; //сердечки на сцене
     public int lives;//жизни
     public bool gameResult;//РЕЗУЛЬТАТ ИГРЫ
+
+    public bool autoPlay;//Автоигра, проверка на качество игры
+    public float autoPlaySpeed;//скорость автоигры
+
+    SceneLoader sceneLoader;// СценЛодер
+    Ball ball;//Мяч 
 
     private void Awake() //Фикс дублирующихся ГЕЙММЕНЕДЖЕРОВ
     {
@@ -24,8 +30,10 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {
-        Platform platform = FindObjectOfType<Platform>();// Нашли платформу на сцене
+    {        
+        sceneLoader = FindObjectOfType<SceneLoader>(); //Нашли SceneLoader на сцене
+       
+
 
         imagePause.gameObject.SetActive(false);
         gameResult = true;
@@ -33,6 +41,13 @@ public class GameManager : MonoBehaviour
         lives = imageLives.Length - 1;
 
         DontDestroyOnLoad(gameObject);
+
+        if (autoPlay)
+        {
+            Time.timeScale = autoPlaySpeed;
+        }
+
+
     }
 
     private void Update()
@@ -58,12 +73,20 @@ public class GameManager : MonoBehaviour
         {
             if (pauseActive)
             {
+                if (autoPlay)//Скорость для автоплея после паузы(чтобы сохранять ее)
+                {
+                    Time.timeScale = autoPlaySpeed;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                    
+                }
+
                 //turn off Pause
                 imagePause.gameObject.SetActive(false);
-                Time.timeScale = 1;
                 pauseActive = false;
                 platform.platformIsActive = true; ; //Включаем движение платформы
-
             }
             else
             {
@@ -74,6 +97,28 @@ public class GameManager : MonoBehaviour
                 platform.platformIsActive = false;//Выключаем движение платформы
             }
         }
+    }
+
+    public void CheckLoseOrNot() //Проверка на проигрыш, вызываемая при касании Ground
+    {
+
+        if (lives <= 0)//если проиграл
+        {
+            ReturnAllLives();
+            gameResult = false;
+            sceneLoader.LoadEndScene();//загрузка последней сцены
+
+        }
+        else
+        {
+            HeartLoss(lives);
+            lives--;
+            ball = FindObjectOfType<Ball>();//Нашли мяч на сцене. Ищем тут, потому что мячи разные на каждой сцене
+            ball.LockBall();
+        }
+
+
+
     }
 
 

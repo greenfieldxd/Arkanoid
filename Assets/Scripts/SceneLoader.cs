@@ -17,7 +17,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void LoadEndScene()
+    public void LoadEndScene()//загрузка последней сцены
     {
         SceneManager.LoadScene("EndScene");
     }

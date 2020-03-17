@@ -6,11 +6,19 @@ public class Ball : MonoBehaviour
 {
     public float speedBall;
 
-    public bool started;
+    bool started;//Старт мяча
     Platform platform;
     Rigidbody2D rb;
 
-    // Start is called before the first frame update
+   
+
+    public bool IsStarted()
+    {
+        return started;
+    }
+
+
+
     void Start()
     {
         started = false;
@@ -51,6 +59,12 @@ public class Ball : MonoBehaviour
         rb.AddForce(force);
     }
 
+    public void LockBall()//мячик двигается с платформой и убираем ему скорость
+    {
+        started = false;
+        rb.velocity = new Vector2(0, 0); // Vector2.zero
+    }
+
 
 
 
@@ -62,7 +76,7 @@ public class Ball : MonoBehaviour
     //    Debug.Log("Collision Enter!"); //Произошла коллизия
     //}
 
-   
+
 
     //private void OnCollisionStay2D(Collision2D collision)
     //{

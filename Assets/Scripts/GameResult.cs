@@ -14,7 +14,7 @@ public class GameResult : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        if(gm.gameResult)
+        if(gm.gameResult == true)
         {
             endText.text = "Ты выиграл, твои очки составили: " + gm.score;
         }
@@ -22,6 +22,13 @@ public class GameResult : MonoBehaviour
         {
             endText.text = "Ты проиграл, твои очки составили: " + gm.score;
         }
+    }
+
+    public void ResetScoreAndLivesAfterGame()//Вызов этой функции по кнопке Back to main menu
+    {
+        gm.score = 0;
+        gm.textScore.text = "Score: 0";
+        gm.gameResult = true;
     }
 
     
