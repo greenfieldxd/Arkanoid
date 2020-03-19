@@ -11,6 +11,8 @@ public class Block : MonoBehaviour
 
     public int strength; //задаем силу блока (0, 1, 2)
     public int scoreBlock;// очки за блок
+    public GameObject pickUp;//prefab of pickUp to create when block destroy
+
 
     LevelManager levelManager;
     GameManager gm; // Наш GameManager, чтобы использовать его функции
@@ -39,6 +41,7 @@ public class Block : MonoBehaviour
         {
             gm.AddScore(scoreBlock); // вызываем функцию из GameManager
             DestroyBlock();
+
         }
         else
         {
@@ -53,5 +56,14 @@ public class Block : MonoBehaviour
         Destroy(gameObject);
 
         levelManager.RemoveBlockCount(); //Удаляем блок в нашем GameManager из переменной blocksNumber
+
+        if (pickUp != null)
+        {
+            Vector3 pickUpPosition = transform.position; 
+            Instantiate(pickUp, pickUpPosition, Quaternion.identity);//Создание объекта на месте разрушенного блока
+
+            //GameObject newObject = Instantiate(pickUp);
+            //newObject.transform.position = pickUpPosition;
+        }
     }
 }

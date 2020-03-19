@@ -17,6 +17,10 @@ public class Ball : MonoBehaviour
         return started;
     }
 
+    public void ModifySpeed(float modificator)
+    {
+        rb.velocity = rb.velocity * modificator;
+    }
 
 
     void Start()
@@ -55,8 +59,8 @@ public class Ball : MonoBehaviour
     private void LaunchBall()
     {
         
-        Vector2 force = new Vector2(Random.Range(-1f, 1f), 1).normalized * speedBall;
-        rb.AddForce(force);
+        Vector2 force = new Vector2(Random.Range(-1f, 1f), 1).normalized;
+        rb.AddForce(force * speedBall);
     }
 
     public void LockBall()//мячик двигается с платформой и убираем ему скорость

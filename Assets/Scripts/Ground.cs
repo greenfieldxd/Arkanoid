@@ -14,9 +14,11 @@ public class Ground : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gm.CheckLoseOrNot();//Проверяем проиграли или нет, функция в GameManager
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            gm.CheckLoseOrNot();//Проверяем проиграли или нет, функция в GameManager
+        }  
     }
-
 
 }
     
