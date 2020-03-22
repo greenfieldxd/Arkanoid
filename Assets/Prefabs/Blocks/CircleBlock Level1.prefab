@@ -101,6 +101,12 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 272bf58b61764b24f8e63e21943d12f6, type: 3}
   strength: 0
   scoreBlock: 0
+  pickUp:
+  - {fileID: 6038227946716759749, guid: ba083ca9caacb454bbe1430c1f8b3dcc, type: 3}
+  - {fileID: 6038227946716759749, guid: 3520dbb4aa3a0ba4d815893f361ecf62, type: 3}
+  - {fileID: 6038227946716759749, guid: 7cfb88c8eb5f2f3468e2a3ba15fe04b0, type: 3}
+  - {fileID: 6038227946716759749, guid: 94ad59c4960a187448541035250dd153, type: 3}
+  - {fileID: 6038227946716759749, guid: 36191cd767700434580debab8c89fb98, type: 3}
 --- !u!58 &4286647711317281560
 CircleCollider2D:
   m_ObjectHideFlags: 0

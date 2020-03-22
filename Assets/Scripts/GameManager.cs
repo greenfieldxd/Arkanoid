@@ -138,4 +138,10 @@ public class GameManager : MonoBehaviour
         this.score += score;
         textScore.text = "Score: " + this.score; // выводит на сцену измененный Score
     }
+
+    public void ChangeScoreWithPickUp(int scoreChanger)
+    {
+        score = score + scoreChanger;
+        textScore.text = "Score: " + score;
+    }
 }

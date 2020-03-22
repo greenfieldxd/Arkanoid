@@ -13,18 +13,20 @@ public class PickUpBallSpeed : MonoBehaviour
         ball.ModifySpeed(speedKoef);
     }
 
+ 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform"))
+            if (collision.gameObject.CompareTag("Platform"))
             {
 
-            ApplyEffect();
-            Destroy(gameObject);//Уничтожаем после применения эффекта
+                ApplyEffect();
+                Destroy(gameObject);//Уничтожаем после применения эффекта
             }
-        else if (collision.gameObject.CompareTag("Ground"))
+            else if (collision.gameObject.CompareTag("Ground"))
             {
-            Destroy(gameObject);
-            } 
+                Destroy(gameObject);
+            }
     }
 }
 

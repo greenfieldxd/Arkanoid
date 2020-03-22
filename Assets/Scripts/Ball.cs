@@ -17,9 +17,14 @@ public class Ball : MonoBehaviour
         return started;
     }
 
-    public void ModifySpeed(float modificator)
+    public void ModifySpeed(float modificator)// Изменяет скорость
     {
         rb.velocity = rb.velocity * modificator;
+    }
+
+    public void ModifyScale(Vector3 scaleBall)// изменяет SCALE
+    {
+        transform.localScale = scaleBall;
     }
 
 

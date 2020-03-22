@@ -54,4 +54,9 @@ public class Platform : MonoBehaviour
             transform.position = new Vector3(ball.transform.position.x, transform.position.y, 0); 
     }
 
+    public void ModifyScale(Vector3 scalePlatform)// изменяет SCALE
+    {
+        transform.localScale = scalePlatform;
+    }
+
 }

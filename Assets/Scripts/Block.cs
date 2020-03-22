@@ -11,7 +11,7 @@ public class Block : MonoBehaviour
 
     public int strength; //задаем силу блока (0, 1, 2)
     public int scoreBlock;// очки за блок
-    public GameObject pickUp;//prefab of pickUp to create when block destroy
+    public GameObject[] pickUp;//prefab of pickUp to create when block destroy
 
 
     LevelManager levelManager;
@@ -57,10 +57,23 @@ public class Block : MonoBehaviour
 
         levelManager.RemoveBlockCount(); //Удаляем блок в нашем GameManager из переменной blocksNumber
 
-        if (pickUp != null)
+        CreatePickUpWithChance();
+    }
+
+    private void CreatePickUpWithChance()//Создаем PickUp на месте разрушенного блока с шансом 1 к 5 и выбираем Рандомный PickUp
+    {
+        int chance;
+        chance = Random.Range(1, 6);// Шанс 1к 5, не включает 6.
+        Debug.Log(chance);
+
+        int randomPickUp; //У нас есть пулл из PickUps, будет выпадать рандомный
+        randomPickUp = Random.Range(0, pickUp.Length);
+
+
+        if (pickUp[randomPickUp] != null && chance == 3) //Выбрали любое значение из 5
         {
-            Vector3 pickUpPosition = transform.position; 
-            Instantiate(pickUp, pickUpPosition, Quaternion.identity);//Создание объекта на месте разрушенного блока
+            Vector3 pickUpPosition = transform.position;
+            Instantiate(pickUp[randomPickUp], pickUpPosition, Quaternion.identity);//Создание объекта на месте разрушенного блока
 
             //GameObject newObject = Instantiate(pickUp);
             //newObject.transform.position = pickUpPosition;
