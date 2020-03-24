@@ -59,4 +59,5 @@ public class Platform : MonoBehaviour
         transform.localScale = scalePlatform;
     }
 
+
 }

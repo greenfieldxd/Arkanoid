@@ -5,10 +5,13 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public float speedBall;
+    public bool stickyPlatform = false;
 
     bool started;//Старт мяча
     Platform platform;
     Rigidbody2D rb;
+    public GameObject ball;//Объект типа Мяч
+
 
    
 
@@ -72,6 +75,22 @@ public class Ball : MonoBehaviour
     {
         started = false;
         rb.velocity = new Vector2(0, 0); // Vector2.zero
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) //Прикрепляет мяч к платформе
+    { 
+        if (collision.gameObject.CompareTag("Platform") && stickyPlatform == true)
+        {
+            LockBall();
+            stickyPlatform = false;
+        }   
+    }
+
+    public void CreateBall() //Функция создания нового мяча, нужно отладить чтобы работало все хорошо
+    {
+      //  Vector3 ballPosition = transform.position;
+      //  Instantiate(ball, ballPosition, Quaternion.identity);
+
     }
 
 

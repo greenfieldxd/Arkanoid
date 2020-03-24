@@ -2,26 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpScore : MonoBehaviour
+public class PickUpStopBallOnPlatform : MonoBehaviour
 {
-    GameManager gm;
+    Ball ball;
 
-    void ApplyEffect()// Либо +3 либо -3 к Score
+    void ApplyEffect()
     {
-        gm = FindObjectOfType<GameManager>();
-        int randomScore = Random.Range(0, 2);
-        //Debug.Log(randomScore);
-        if (randomScore == 0)
-        {
-            gm.ChangeScoreWithPickUp(-20);
-        }
-        else
-        {
-            gm.ChangeScoreWithPickUp(50);
-        }
+        ball = FindObjectOfType<Ball>();
+        ball.stickyPlatform = true;
     }
-
-
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

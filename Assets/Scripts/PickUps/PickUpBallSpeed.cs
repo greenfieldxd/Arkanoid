@@ -7,10 +7,18 @@ public class PickUpBallSpeed : MonoBehaviour
     public float speedKoef;
     Ball ball;
 
-    void ApplyEffect()
+    void ApplyEffect()// Скорость будет рандомно либо увеличиваться, либо уменьшаться
     {
         ball = FindObjectOfType<Ball>();
-        ball.ModifySpeed(speedKoef);
+        int randomKoef = Random.Range(0, 2);
+        if(randomKoef == 0)
+        {
+            ball.ModifySpeed(1.25f);
+        }
+        else
+        {
+            ball.ModifySpeed(0.75f);
+        }             
     }
 
  

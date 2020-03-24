@@ -64,7 +64,7 @@ public class Block : MonoBehaviour
     {
         int chance;
         chance = Random.Range(1, 6);// Шанс 1к 5, не включает 6.
-        Debug.Log(chance);
+        //Debug.Log(chance); показывает выпадение шанса
 
         int randomPickUp; //У нас есть пулл из PickUps, будет выпадать рандомный
         randomPickUp = Random.Range(0, pickUp.Length);

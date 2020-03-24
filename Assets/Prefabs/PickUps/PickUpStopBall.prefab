@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6209922553485545188
+--- !u!1 &6038227946716759749
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2823449244387393021}
-  - component: {fileID: 4871709172745173335}
-  - component: {fileID: 3657893560683221152}
-  - component: {fileID: 4286647711317281560}
+  - component: {fileID: 6038227946716759751}
+  - component: {fileID: 6038227946716759750}
+  - component: {fileID: 6038227946716759801}
+  - component: {fileID: 6038227946716759800}
+  - component: {fileID: 8263854592143464871}
   m_Layer: 0
-  m_Name: CircleBlock Level3
+  m_Name: PickUpStopBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2823449244387393021
+--- !u!4 &6038227946716759751
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6209922553485545188}
+  m_GameObject: {fileID: 6038227946716759749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.27, y: 1.94, z: 0}
+  m_LocalPosition: {x: 2.3645983, y: -0.47152835, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4871709172745173335
+--- !u!212 &6038227946716759750
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6209922553485545188}
+  m_GameObject: {fileID: 6038227946716759749}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,55 +73,64 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 272bf58b61764b24f8e63e21943d12f6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 668522a4be6ed754082fc71f68b90c68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7, y: 0.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3657893560683221152
-MonoBehaviour:
+--- !u!50 &6038227946716759801
+Rigidbody2D:
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6209922553485545188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9b4cd88921f4484593e10a3790a9fd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteLevel:
-  - {fileID: 21300000, guid: d9379cfe1803543439db13316a7f0bf4, type: 3}
-  - {fileID: 21300000, guid: e50c0a988e25bc546a000724debaf2b2, type: 3}
-  - {fileID: 21300000, guid: 272bf58b61764b24f8e63e21943d12f6, type: 3}
-  strength: 2
-  scoreBlock: 0
-  pickUp:
-  - {fileID: 6038227946716759749, guid: eba5514f4a40f5c40891524e419a04a3, type: 3}
-  - {fileID: 6038227946716759749, guid: ba083ca9caacb454bbe1430c1f8b3dcc, type: 3}
-  - {fileID: 6038227946716759749, guid: 7cfb88c8eb5f2f3468e2a3ba15fe04b0, type: 3}
-  - {fileID: 6038227946716759749, guid: 36191cd767700434580debab8c89fb98, type: 3}
-  - {fileID: 6038227946716759749, guid: 94ad59c4960a187448541035250dd153, type: 3}
-  - {fileID: 6038227946716759749, guid: f7d3649ab50711147ac3e424ea44dc10, type: 3}
---- !u!58 &4286647711317281560
+  m_GameObject: {fileID: 6038227946716759749}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!58 &6038227946716759800
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6209922553485545188}
+  m_GameObject: {fileID: 6038227946716759749}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.35
+--- !u!114 &8263854592143464871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6038227946716759749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827c5bf133160134fbb9e773ed4bb1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stickyPlatform: 0

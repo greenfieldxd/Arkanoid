@@ -102,11 +102,12 @@ MonoBehaviour:
   strength: 0
   scoreBlock: 0
   pickUp:
+  - {fileID: 6038227946716759749, guid: eba5514f4a40f5c40891524e419a04a3, type: 3}
   - {fileID: 6038227946716759749, guid: ba083ca9caacb454bbe1430c1f8b3dcc, type: 3}
-  - {fileID: 6038227946716759749, guid: 3520dbb4aa3a0ba4d815893f361ecf62, type: 3}
   - {fileID: 6038227946716759749, guid: 7cfb88c8eb5f2f3468e2a3ba15fe04b0, type: 3}
-  - {fileID: 6038227946716759749, guid: 94ad59c4960a187448541035250dd153, type: 3}
   - {fileID: 6038227946716759749, guid: 36191cd767700434580debab8c89fb98, type: 3}
+  - {fileID: 6038227946716759749, guid: 94ad59c4960a187448541035250dd153, type: 3}
+  - {fileID: 6038227946716759749, guid: f7d3649ab50711147ac3e424ea44dc10, type: 3}
 --- !u!61 &1833669815132691558
 BoxCollider2D:
   m_ObjectHideFlags: 0

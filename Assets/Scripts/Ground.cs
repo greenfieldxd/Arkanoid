@@ -4,22 +4,31 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Ground : MonoBehaviour
-{ 
+{
     GameManager gm;
+    Ball[] balls;
 
     private void Start()
-    { 
-        gm = FindObjectOfType<GameManager>();//Нашли ГеймМенеджер
+    {
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ball"))
-        {
-            gm.CheckLoseOrNot();//Проверяем проиграли или нет, функция в GameManager
-        }  
-    }
+        gm = FindObjectOfType<GameManager>();//Нашли ГеймМенеджер
+        balls = FindObjectsOfType<Ball>();
 
+        if (balls.Length <= 1 && collision.gameObject.CompareTag("Ball"))
+        {
+            gm.CheckLoseOrNot();//Проверяем проиграли или нет, функция в GameManager         
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
+
+    }
 }
     
 
