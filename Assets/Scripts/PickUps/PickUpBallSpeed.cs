@@ -5,23 +5,19 @@ using UnityEngine;
 public class PickUpBallSpeed : MonoBehaviour
 {
     public float speedKoef;
-    Ball ball;
+    Ball[] balls;
 
-    void ApplyEffect()// Скорость будет рандомно либо увеличиваться, либо уменьшаться
+    void ApplyEffect()// Либо +Scale либо -Scale к Ball
     {
-        ball = FindObjectOfType<Ball>();
-        int randomKoef = Random.Range(0, 2);
-        if(randomKoef == 0)
+        balls = FindObjectsOfType<Ball>();
+
+        for (int i = 0; i < balls.Length; i++)
         {
-            ball.ModifySpeed(1.25f);
+            balls[i].ModifySpeed(speedKoef);
         }
-        else
-        {
-            ball.ModifySpeed(0.75f);
-        }             
     }
 
- 
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,10 +26,6 @@ public class PickUpBallSpeed : MonoBehaviour
 
                 ApplyEffect();
                 Destroy(gameObject);//Уничтожаем после применения эффекта
-            }
-            else if (collision.gameObject.CompareTag("Ground"))
-            {
-                Destroy(gameObject);
             }
     }
 }

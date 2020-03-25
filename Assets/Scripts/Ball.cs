@@ -5,15 +5,18 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public float speedBall;
-    public bool stickyPlatform = false;
 
+    bool stickyBall; //Липкость мяча
     bool started;//Старт мяча
     Platform platform;
     Rigidbody2D rb;
+    GameManager gm;
     public GameObject ball;//Объект типа Мяч
 
+    Vector3 ballOffset;
 
-   
+
+
 
     public bool IsStarted()
     {
@@ -25,20 +28,31 @@ public class Ball : MonoBehaviour
         rb.velocity = rb.velocity * modificator;
     }
 
-    public void ModifyScale(Vector3 scaleBall)// изменяет SCALE
+    public void ModifyScale(float modificator)// изменяет SCALE
     {
-        transform.localScale = scaleBall;
+        transform.localScale = transform.localScale * modificator;
+    }
+    public void MakeSticky()
+    {
+        stickyBall = true;
     }
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>(); // найти компонет Rigitbody2D на том же гейм обжекте
+        started = false; 
+    }
 
     void Start()
     {
-        started = false;
+
         platform = FindObjectOfType<Platform>(); //Найти Platform на сцене
-        rb = GetComponent<Rigidbody2D>(); // найти компонет Rigitbody2D на том же гейм обжекте
+        gm = FindObjectOfType<GameManager>();
+
+        ballOffset = transform.position - platform.transform.position; //вектор между платформой и мячом
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (started)
@@ -55,18 +69,18 @@ public class Ball : MonoBehaviour
     private void LockBallToPlatform()
     {
         //двигаться с платформой
-        transform.position = new Vector3(platform.transform.position.x, platform.transform.position.y + 0.6f, 0);
+        //transform.position = new Vector3(platform.transform.position.x, platform.transform.position.y + 0.6f, 0);
+        transform.position = platform.transform.position + ballOffset;
         if (Input.GetMouseButtonDown(0))
         {
             //Запуск мяча
-            started = true;
             LaunchBall();
         }
     }
 
-    private void LaunchBall()
+    public void LaunchBall()
     {
-        
+        started = true;
         Vector2 force = new Vector2(Random.Range(-1f, 1f), 1).normalized;
         rb.AddForce(force * speedBall);
     }
@@ -77,21 +91,40 @@ public class Ball : MonoBehaviour
         rb.velocity = new Vector2(0, 0); // Vector2.zero
     }
 
+    public void Dublicate()
+    {
+        Ball newBall = Instantiate(this);
+        newBall.LaunchBall();
+        gm.extraBalls++;
+        
+        if (stickyBall)
+        {
+            newBall.MakeSticky();
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision) //Прикрепляет мяч к платформе
-    { 
-        if (collision.gameObject.CompareTag("Platform") && stickyPlatform == true)
+    {
+        if (collision.gameObject.CompareTag("Platform") && stickyBall == true) //можно collision.gameObject.tag == "name"
         {
             LockBall();
-            stickyPlatform = false;
-        }   
+            stickyBall = false;
+            ballOffset = transform.position - platform.transform.position; //Обновляем Offset
+        }
     }
 
-    public void CreateBall() //Функция создания нового мяча, нужно отладить чтобы работало все хорошо
+
+    private void OnDrawGizmos()
     {
-      //  Vector3 ballPosition = transform.position;
-      //  Instantiate(ball, ballPosition, Quaternion.identity);
+        if (rb != null)
+        {
+            Gizmos.color = Color.white;
 
+            Gizmos.DrawLine(transform.position, transform.position + (Vector3)rb.velocity);
+        }
     }
+
+
 
 
 

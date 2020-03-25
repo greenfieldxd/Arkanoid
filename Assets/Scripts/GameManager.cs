@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public int score = 0; //очки
+    public int extraBalls = 0;//Доп. мячи
     bool pauseActive = false;//активность паузы
     public Image imagePause;// картинка паузы
     public Text textScore;  //набранные очки

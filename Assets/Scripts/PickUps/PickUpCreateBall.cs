@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class PickUpCreateBall : MonoBehaviour
 {
+    public int ballsNumber = 2;
     Ball ball;
+
+
     void ApplyEffect()
     {
         ball = FindObjectOfType<Ball>();
-        ball.CreateBall();
+
+        for (int i = 0; i < ballsNumber; i++)
+        {
+            ball.Dublicate();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -18,10 +25,6 @@ public class PickUpCreateBall : MonoBehaviour
 
             ApplyEffect();
             Destroy(gameObject);//Уничтожаем после применения эффекта
-        }
-        else if (collision.gameObject.CompareTag("Ground"))
-        {
-            Destroy(gameObject);
         }
     }
 }

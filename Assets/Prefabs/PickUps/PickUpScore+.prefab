@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6038227946716759751}
   - component: {fileID: 6038227946716759750}
+  - component: {fileID: -381374921191674629}
   - component: {fileID: 6038227946716759801}
   - component: {fileID: 6038227946716759800}
-  - component: {fileID: -4977420842977930427}
   m_Layer: 0
-  m_Name: PickUpScalePlatform
+  m_Name: PickUpScore+
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c7dd460fa2dc6c445bd08d4a009d3646, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 265ef05679ee3874a8cb9b6884624554, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,6 +84,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-381374921191674629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6038227946716759749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f002248d18f241e47a6a832cdb08c3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  changeScore: 50
 --- !u!50 &6038227946716759801
 Rigidbody2D:
   serializedVersion: 4
@@ -121,15 +134,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.35
---- !u!114 &-4977420842977930427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6038227946716759749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bc888934239fbf47912d533c13e0545, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

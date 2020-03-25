@@ -56,8 +56,7 @@ public class Block : MonoBehaviour
         Destroy(gameObject);
 
         levelManager.RemoveBlockCount(); //Удаляем блок в нашем GameManager из переменной blocksNumber
-
-        CreatePickUpWithChance();
+        CreatePickUpWithChance();// Создание PickUp если выпал шанс
     }
 
     private void CreatePickUpWithChance()//Создаем PickUp на месте разрушенного блока с шансом 1 к 5 и выбираем Рандомный PickUp

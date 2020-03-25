@@ -6,28 +6,31 @@ using UnityEngine.SceneManagement;
 public class Ground : MonoBehaviour
 {
     GameManager gm;
-    Ball[] balls;
 
     private void Start()
     {
+        gm = FindObjectOfType<GameManager>();//Нашли ГеймМенеджер  
         
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gm = FindObjectOfType<GameManager>();//Нашли ГеймМенеджер
-        balls = FindObjectsOfType<Ball>();
-
-        if (balls.Length <= 1 && collision.gameObject.CompareTag("Ball"))
+        if (collision.gameObject.CompareTag("Ball"))
         {
-            gm.CheckLoseOrNot();//Проверяем проиграли или нет, функция в GameManager         
+            if (gm.extraBalls == 0)
+            {
+                gm.CheckLoseOrNot();//Проверяем проиграли или нет, функция в GameManager         
+            }
+            else
+            {
+                gm.extraBalls--;
+                Destroy(collision.gameObject);
+            }
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
         }
-        
-
     }
 }
     

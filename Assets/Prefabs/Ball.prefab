@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2983699432038332598}
   - component: {fileID: 2983699432038332599}
   - component: {fileID: 2983699432038332592}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball
   m_TagString: Ball
   m_Icon: {fileID: 0}
@@ -98,7 +98,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedBall: 500
-  stickyPlatform: 0
   ball: {fileID: 2983699432038332593}
 --- !u!58 &2983699432038332599
 CircleCollider2D:

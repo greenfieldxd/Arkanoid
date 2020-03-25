@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class PickUpStopBallOnPlatform : MonoBehaviour
 {
-    Ball ball;
+    Ball[] balls;
 
     void ApplyEffect()
     {
-        ball = FindObjectOfType<Ball>();
-        ball.stickyPlatform = true;
+        balls = FindObjectsOfType<Ball>();
+
+        for (int i = 0; i < balls.Length; i++)
+        {
+            balls[i].MakeSticky();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,10 +23,6 @@ public class PickUpStopBallOnPlatform : MonoBehaviour
 
             ApplyEffect();
             Destroy(gameObject);//Уничтожаем после применения эффекта
-        }
-        else if (collision.gameObject.CompareTag("Ground"))
-        {
-            Destroy(gameObject);
         }
     }
 }

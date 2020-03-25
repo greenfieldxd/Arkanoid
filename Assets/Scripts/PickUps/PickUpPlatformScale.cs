@@ -5,20 +5,12 @@ using UnityEngine;
 public class PickUpPlatformScale : MonoBehaviour
 {
     Platform platform;
+    public float koefScale;
 
     void ApplyEffect()// Либо +Scale либо -Scale к Ball
     {
         platform = FindObjectOfType<Platform>();
-        int randomScale = Random.Range(0, 2);
-        Debug.Log(randomScale);
-        if (randomScale == 0)
-        {
-            platform.ModifyScale(new Vector3(0.5f, 1f, 1f));//-Scale
-        }
-        else
-        {
-            platform.ModifyScale(new Vector3(1.5f, 1f, 1f));//+Scale
-        }
+        platform.ModifyScale(koefScale);
     }
 
 
@@ -30,10 +22,6 @@ public class PickUpPlatformScale : MonoBehaviour
 
             ApplyEffect();
             Destroy(gameObject);//Уничтожаем после применения эффекта
-        }
-        else if (collision.gameObject.CompareTag("Ground"))
-        {
-            Destroy(gameObject);
         }
     }
 }
