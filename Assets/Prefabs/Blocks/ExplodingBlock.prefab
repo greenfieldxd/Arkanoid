@@ -101,7 +101,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f2e6375e73b98e347bc039cfaa10fa0c, type: 3}
   strength: 0
   scoreBlock: 0
-  explodeRadius: 2
+  explodeRadius: 1
   isExploding: 1
   pickUp:
   - {fileID: 6038227946716759749, guid: f7d3649ab50711147ac3e424ea44dc10, type: 3}

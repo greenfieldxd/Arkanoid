@@ -28,6 +28,12 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(activeSceneIndex); //перезагружаю сцену после касания земли
     }
 
+    public void LoadLevel(int indexScene)
+    {
+        
+        SceneManager.LoadScene(indexScene);
+    }
+
     public void ExitGame()
     {
         Application.Quit();

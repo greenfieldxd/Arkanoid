@@ -58,10 +58,15 @@ public class Block : MonoBehaviour
     private void DestroyBlock() //Функция уничтожение блока
     {
         Destroy(gameObject);
+        CreatePickUpWithChance();// Создание PickUp если выпал шанс
+        Explode();// Взрыв, если он возможен у блока
 
         levelManager.RemoveBlockCount(); //Удаляем блок в нашем GameManager из переменной blocksNumber
-        CreatePickUpWithChance();// Создание PickUp если выпал шанс
 
+    }
+
+    private void Explode()// Если блок взрывной, то взрываем
+    {
         if (isExploding)
         {
             //explode
@@ -76,20 +81,20 @@ public class Block : MonoBehaviour
             //Проходим по каждому объекту
             foreach (Collider2D objectI in objectsInRadius)
             {
-                if(objectI.gameObject == gameObject)
+                if (objectI.gameObject == gameObject)
                 {
                     continue;//next iteration
                 }
 
                 Block block = objectI.gameObject.GetComponent<Block>();
-                if(block == null)
+                if (block == null)
                 {
-                    // Debug.Log(objectI.gameObject.name);
+                    //Debug.Log(objectI.gameObject.name);
                     Destroy(objectI.gameObject);
                 }
                 else
                 {
-                    DestroyBlock();
+                    block.DestroyBlock();
                 }
             }
         }
@@ -114,4 +119,13 @@ public class Block : MonoBehaviour
             //newObject.transform.position = pickUpPosition;
         }
     }
+
+
+
+    private void OnDrawGizmos()
+    {     
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, explodeRadius);
+    }
+
 }
