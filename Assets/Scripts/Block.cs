@@ -11,6 +11,10 @@ public class Block : MonoBehaviour
 
     public int strength; //задаем силу блока (0, 1, 2)
     public int scoreBlock;// очки за блок
+
+    public float explodeRadius;
+    public bool isExploding;
+    
     public GameObject[] pickUp;//prefab of pickUp to create when block destroy
 
 
@@ -57,6 +61,38 @@ public class Block : MonoBehaviour
 
         levelManager.RemoveBlockCount(); //Удаляем блок в нашем GameManager из переменной blocksNumber
         CreatePickUpWithChance();// Создание PickUp если выпал шанс
+
+        if (isExploding)
+        {
+            //explode
+
+            //layer Mask to filter physics objects
+            LayerMask layerMask = LayerMask.GetMask("Block");
+
+            //find objects in radius
+            Collider2D[] objectsInRadius = Physics2D.OverlapCircleAll(transform.position, explodeRadius, layerMask);
+
+            //будем использовать foreach
+            //Проходим по каждому объекту
+            foreach (Collider2D objectI in objectsInRadius)
+            {
+                if(objectI.gameObject == gameObject)
+                {
+                    continue;//next iteration
+                }
+
+                Block block = objectI.gameObject.GetComponent<Block>();
+                if(block == null)
+                {
+                    // Debug.Log(objectI.gameObject.name);
+                    Destroy(objectI.gameObject);
+                }
+                else
+                {
+                    DestroyBlock();
+                }
+            }
+        }
     }
 
     private void CreatePickUpWithChance()//Создаем PickUp на месте разрушенного блока с шансом 1 к 5 и выбираем Рандомный PickUp

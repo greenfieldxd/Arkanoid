@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1833669815132691553}
   - component: {fileID: 1833669815132691555}
   - component: {fileID: 1833669815132691558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WoodBlock lvl1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,6 +101,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f2e6375e73b98e347bc039cfaa10fa0c, type: 3}
   strength: 0
   scoreBlock: 0
+  explodeRadius: 0
+  isExploding: 0
   pickUp:
   - {fileID: 6038227946716759749, guid: f7d3649ab50711147ac3e424ea44dc10, type: 3}
   - {fileID: 6038227946716759749, guid: 94ad59c4960a187448541035250dd153, type: 3}

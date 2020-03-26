@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1833669815132691555}
   - component: {fileID: 1833669815132691558}
   m_Layer: 9
-  m_Name: WoodBlock lvl2
+  m_Name: ExplodingBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,8 +72,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e92d5638d6a24e94497f5fd697c49ebf, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f2e6375e73b98e347bc039cfaa10fa0c, type: 3}
+  m_Color: {r: 0.8867924, g: 0.06274474, b: 0.06274474, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,13 +96,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteLevel:
-  - {fileID: 21300000, guid: 82d08a91e510baf45b0f140c394c3955, type: 3}
-  - {fileID: 21300000, guid: 2bd5130c125ec95499b97085be6f58b2, type: 3}
-  - {fileID: 21300000, guid: e92d5638d6a24e94497f5fd697c49ebf, type: 3}
-  strength: 1
+  - {fileID: 21300000, guid: 6fa683f922313274998f5e689bd8437c, type: 3}
+  - {fileID: 21300000, guid: aa0a9755361e21245b462b33fb7a5f23, type: 3}
+  - {fileID: 21300000, guid: f2e6375e73b98e347bc039cfaa10fa0c, type: 3}
+  strength: 0
   scoreBlock: 0
-  explodeRadius: 0
-  isExploding: 0
+  explodeRadius: 2
+  isExploding: 1
   pickUp:
   - {fileID: 6038227946716759749, guid: f7d3649ab50711147ac3e424ea44dc10, type: 3}
   - {fileID: 6038227946716759749, guid: 94ad59c4960a187448541035250dd153, type: 3}
