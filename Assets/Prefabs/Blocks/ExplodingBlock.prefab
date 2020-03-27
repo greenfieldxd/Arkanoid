@@ -101,6 +101,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f2e6375e73b98e347bc039cfaa10fa0c, type: 3}
   strength: 0
   scoreBlock: 0
+  timeInvokeExplode: 0.2
   explodeRadius: 1
   isExploding: 1
   pickUp:

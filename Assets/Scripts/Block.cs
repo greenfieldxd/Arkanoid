@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +11,7 @@ public class Block : MonoBehaviour
 
     public int strength; //задаем силу блока (0, 1, 2)
     public int scoreBlock;// очки за блок
+    public float timeInvokeExplode;
 
     public float explodeRadius;
     public bool isExploding;
@@ -94,7 +95,8 @@ public class Block : MonoBehaviour
                 }
                 else
                 {
-                    block.DestroyBlock();
+		    block.Invoke("DestroyBlock", timeInvokeExplode);
+                    block.gameObject.SetActive(false);             
                 }
             }
         }
