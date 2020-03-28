@@ -99,6 +99,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b8613d2a0d6619d4cba1e9dedebdebb0, type: 3}
   - {fileID: 21300000, guid: 40a985ed25d282946a5f315955d0c64e, type: 3}
   - {fileID: 21300000, guid: 5d47cf07645a147478174059a5b9f07e, type: 3}
+  maxChance: 6
   strength: 2
   scoreBlock: 0
   timeInvokeExplode: 0

@@ -22,6 +22,7 @@ public class Ball : MonoBehaviour
     {
         return started;
     }
+    
 
     public void ModifySpeed(float modificator)// Изменяет скорость
     {
@@ -101,6 +102,21 @@ public class Ball : MonoBehaviour
         {
             newBall.MakeSticky();
         }
+    }
+
+    public void ExplodingBall()//МЯч становится взрывным(будем вызывать используя в pickUpExplodeBall)
+    {
+        ModifyScale(1.25f);
+        ModifySpeed(1.25f);
+
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        TrailRenderer trail = GetComponentInChildren<TrailRenderer>();
+
+        spriteRenderer.color = Color.green;
+        trail.time = 0.4f;
+        trail.startColor = Color.yellow;
+        trail.endColor = Color.green;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision) //Прикрепляет мяч к платформе

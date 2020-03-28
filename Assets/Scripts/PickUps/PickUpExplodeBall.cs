@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class PickUpExplodeBall : MonoBehaviour
 {
-    public int ballsNumber = 2;
     public int pickUpScore;
 
-    Ball ball;
+    Ball[] balls;
     GameManager gm;
+    
 
     void ApplyEffect()
     {
-        ball = FindObjectOfType<Ball>();
+        balls = FindObjectsOfType<Ball>();
+       
+        foreach (Ball ball in balls) { ball.ExplodingBall(); }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

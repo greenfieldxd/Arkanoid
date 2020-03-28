@@ -9,12 +9,14 @@ public class Block : MonoBehaviour
 {
     public Sprite[] spriteLevel;
 
+    [Header ("Шанс 1 к maxChance")]// не включая max chance
+    public int maxChance;//
+    [Header ("Block settings")]
     public int strength; //задаем силу блока (0, 1, 2)
     public int scoreBlock;// очки за блок
     public float timeInvokeExplode;//задержка уничтожения блоков
-
-    public float explodeRadius;
-    public bool isExploding;
+    public float explodeRadius; //радиус взрыва взрывного блока
+    public bool isExploding;// взрывной или нет
     
     public GameObject[] pickUp;//prefab of pickUp to create when block destroy
 
@@ -105,14 +107,14 @@ public class Block : MonoBehaviour
     private void CreatePickUpWithChance()//Создаем PickUp на месте разрушенного блока с шансом 1 к 5 и выбираем Рандомный PickUp
     {
         int chance;
-        chance = Random.Range(1, 6);// Шанс 1к 5, не включает 6.
+        chance = Random.Range(1, maxChance);// Шанс 1к 5, не включает 6.
         //Debug.Log(chance); показывает выпадение шанса
 
         int randomPickUp; //У нас есть пулл из PickUps, будет выпадать рандомный
         randomPickUp = Random.Range(0, pickUp.Length);
 
 
-        if (pickUp[randomPickUp] != null && chance == 3) //Выбрали любое значение из 5
+        if (pickUp[randomPickUp] != null && chance == 1) //Выбрали любое значение из 5
         {
             Vector3 pickUpPosition = transform.position;
             Instantiate(pickUp[randomPickUp], pickUpPosition, Quaternion.identity);//Создание объекта на месте разрушенного блока
