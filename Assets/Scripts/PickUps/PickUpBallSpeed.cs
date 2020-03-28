@@ -5,7 +5,10 @@ using UnityEngine;
 public class PickUpBallSpeed : MonoBehaviour
 {
     public float speedKoef;
+    public int pickUpScore;
+
     Ball[] balls;
+    GameManager gm;
 
     void ApplyEffect()// Либо +Scale либо -Scale к Ball
     {
@@ -23,6 +26,8 @@ public class PickUpBallSpeed : MonoBehaviour
     {
             if (collision.gameObject.CompareTag("Platform"))
             {
+            gm = FindObjectOfType<GameManager>();
+            gm.AddScore(pickUpScore);
 
                 ApplyEffect();
                 Destroy(gameObject);//Уничтожаем после применения эффекта

@@ -5,12 +5,12 @@ using UnityEngine;
 public class PickUpScore : MonoBehaviour
 {
     GameManager gm;
-    public int changeScore;
+    public int pickUpScore;
 
     void ApplyEffect()// Либо +3 либо -3 к Score
     {
         gm = FindObjectOfType<GameManager>();
-        gm.ChangeScoreWithPickUp(changeScore);
+        gm.AddScore(pickUpScore);
     }
 
 

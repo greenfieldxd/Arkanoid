@@ -5,7 +5,10 @@ using UnityEngine;
 public class PickUpPlatformScale : MonoBehaviour
 {
     Platform platform;
+    GameManager gm;
+
     public float koefScale;
+    public int pickUpScore;
 
     void ApplyEffect()// Либо +Scale либо -Scale к Ball
     {
@@ -19,6 +22,8 @@ public class PickUpPlatformScale : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Platform"))
         {
+            gm = FindObjectOfType<GameManager>();
+            gm.AddScore(pickUpScore);
 
             ApplyEffect();
             Destroy(gameObject);//Уничтожаем после применения эффекта

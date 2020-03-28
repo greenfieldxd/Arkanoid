@@ -11,7 +11,7 @@ public class Block : MonoBehaviour
 
     public int strength; //задаем силу блока (0, 1, 2)
     public int scoreBlock;// очки за блок
-    public float timeInvokeExplode;
+    public float timeInvokeExplode;//задержка уничтожения блоков
 
     public float explodeRadius;
     public bool isExploding;
@@ -95,7 +95,7 @@ public class Block : MonoBehaviour
                 }
                 else
                 {
-		    block.Invoke("DestroyBlock", timeInvokeExplode);
+		            block.Invoke("DestroyBlock", timeInvokeExplode);
                     block.gameObject.SetActive(false);             
                 }
             }

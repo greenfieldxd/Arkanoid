@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PickUpStopBallOnPlatform : MonoBehaviour
 {
+    public int pickUpScore;
+
     Ball[] balls;
+    GameManager gm;
 
     void ApplyEffect()
     {
@@ -20,6 +23,8 @@ public class PickUpStopBallOnPlatform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Platform"))
         {
+            gm = FindObjectOfType<GameManager>();
+            gm.AddScore(pickUpScore);
 
             ApplyEffect();
             Destroy(gameObject);//Уничтожаем после применения эффекта

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpCreateBall : MonoBehaviour
+public class PickUpExplodeBall : MonoBehaviour
 {
     public int ballsNumber = 2;
     public int pickUpScore;
@@ -13,11 +13,6 @@ public class PickUpCreateBall : MonoBehaviour
     void ApplyEffect()
     {
         ball = FindObjectOfType<Ball>();
-
-        for (int i = 0; i < ballsNumber; i++)
-        {
-            ball.Dublicate();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

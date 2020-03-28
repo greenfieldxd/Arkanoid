@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedKoef: 0.75
+  pickUpScore: 10
 --- !u!50 &6038227946716759801
 Rigidbody2D:
   serializedVersion: 4
