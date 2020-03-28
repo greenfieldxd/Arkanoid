@@ -13,9 +13,14 @@ public class PickUpExplodeBall : MonoBehaviour
     void ApplyEffect()
     {
         balls = FindObjectsOfType<Ball>();
-       
-        foreach (Ball ball in balls) { ball.ExplodingBall(); }
-        
+
+        foreach (Ball ball in balls)
+        {
+            ball.ModifyScale(1.25f);
+            ball.ModifySpeed(1.25f);
+            ball.ModifyTrailBall(Color.green, Color.yellow, Color.green, 0.4f);
+            ball.MakeBallExplode();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedBall: 500
+  explodeRadius: 2
   ball: {fileID: 2983699432038332593}
 --- !u!58 &2983699432038332599
 CircleCollider2D:

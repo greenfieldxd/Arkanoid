@@ -5,12 +5,18 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public float speedBall;
+    public float explodeRadius;
 
     bool stickyBall; //Липкость мяча
+    bool explodeBall;//Взрывной мяч
     bool started;//Старт мяча
+
+
     Platform platform;
     Rigidbody2D rb;
     GameManager gm;
+
+
     public GameObject ball;//Объект типа Мяч
 
     Vector3 ballOffset;
@@ -33,9 +39,34 @@ public class Ball : MonoBehaviour
     {
         transform.localScale = transform.localScale * modificator;
     }
-    public void MakeSticky()
+
+    public void ModifyTrailBall(Color ballColor, Color colorStartTrail, Color colorEndTrail, float timeTrail)
+    {
+        TrailRenderer newTrail = GetComponentInChildren<TrailRenderer>();
+        SpriteRenderer newSpriteRender = GetComponent<SpriteRenderer>();
+
+        newSpriteRender.color = ballColor;
+        newTrail.time = timeTrail;
+        newTrail.startColor = colorStartTrail;
+        newTrail.endColor = colorEndTrail;
+    }
+
+    //Делаем мяч липким
+    public void MakeSticky() 
     {
         stickyBall = true;
+    }
+
+    //Делаем мяч взрывным
+    public void MakeBallExplode()
+    {
+        explodeBall = true;
+    }
+
+    //Выключаем взрывной мяч
+    public void OffBallExplode()
+    {
+        explodeBall = false;
     }
 
     private void Awake()
@@ -49,6 +80,8 @@ public class Ball : MonoBehaviour
 
         platform = FindObjectOfType<Platform>(); //Найти Platform на сцене
         gm = FindObjectOfType<GameManager>();
+
+        
 
         ballOffset = transform.position - platform.transform.position; //вектор между платформой и мячом
     }
@@ -65,6 +98,12 @@ public class Ball : MonoBehaviour
         {
             LockBallToPlatform();
         }
+
+        if (explodeBall)
+        {
+            Invoke("OffBallExplode", 4);
+        }
+
     }
 
     private void LockBallToPlatform()
@@ -106,21 +145,25 @@ public class Ball : MonoBehaviour
 
     public void ExplodingBall()//МЯч становится взрывным(будем вызывать используя в pickUpExplodeBall)
     {
-        ModifyScale(1.25f);
-        ModifySpeed(1.25f);
+        if (explodeBall)
+        {
+            LayerMask layerMask = LayerMask.GetMask("Block");
 
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        TrailRenderer trail = GetComponentInChildren<TrailRenderer>();
+            Collider2D[] objectsInRadius = Physics2D.OverlapCircleAll(transform.position, explodeRadius, layerMask);
 
-        spriteRenderer.color = Color.green;
-        trail.time = 0.4f;
-        trail.startColor = Color.yellow;
-        trail.endColor = Color.green;
+            foreach (Collider2D objectI in objectsInRadius)
+            {
+                Block block = objectI.gameObject.GetComponent<Block>();
+                Destroy(block.gameObject);
+            }
 
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) //Прикрепляет мяч к платформе
     {
+        ExplodingBall();//если explodeBall == true, то выполняется
+
         if (collision.gameObject.CompareTag("Platform") && stickyBall == true) //можно collision.gameObject.tag == "name"
         {
             LockBall();
@@ -143,38 +186,5 @@ public class Ball : MonoBehaviour
 
 
 
-
-
-
-    //примеры коллизий
-
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    Debug.Log("Collision Enter!"); //Произошла коллизия
-    //}
-
-
-
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-    //    Debug.Log("Collision Stay!"); //В коллизии
-    //}
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-
-    //    Debug.Log("Trigger Enter"); // Свойство коллайдера (триггер)
-    //}
-
-    //private void OnTriggerExit2D(Collider2D collision)
-    //{
-
-    //    Debug.Log("Trigger Exit!"); // Свойство коллайдера (триггер)
-    //}
-
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-
-    //    Debug.Log("Trigger Stay!"); // Свойство коллайдера (триггер)
-    //}
 
 }
