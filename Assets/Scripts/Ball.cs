@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
     public float speedBall;
     public float explodeRadius;
+    public float explodeTime;
 
     bool stickyBall; //Липкость мяча
     bool explodeBall;//Взрывной мяч
@@ -15,7 +16,6 @@ public class Ball : MonoBehaviour
     Platform platform;
     Rigidbody2D rb;
     GameManager gm;
-
 
     public GameObject ball;//Объект типа Мяч
 
@@ -40,12 +40,10 @@ public class Ball : MonoBehaviour
         transform.localScale = transform.localScale * modificator;
     }
 
-    public void ModifyTrailBall(Color ballColor, Color colorStartTrail, Color colorEndTrail, float timeTrail)
+    public void ModifyTrailBall(Color colorStartTrail, Color colorEndTrail, float timeTrail)
     {
         TrailRenderer newTrail = GetComponentInChildren<TrailRenderer>();
-        SpriteRenderer newSpriteRender = GetComponent<SpriteRenderer>();
-
-        newSpriteRender.color = ballColor;
+        
         newTrail.time = timeTrail;
         newTrail.startColor = colorStartTrail;
         newTrail.endColor = colorEndTrail;
@@ -99,12 +97,15 @@ public class Ball : MonoBehaviour
             LockBallToPlatform();
         }
 
+        //Если мяч взрывной выключаю через заданное время
+        //Надо сделать чтобы цвет Trail становился нормальным
         if (explodeBall)
         {
-            Invoke("OffBallExplode", 4);
+            Invoke("OffBallExplode", explodeTime);
         }
 
     }
+
 
     private void LockBallToPlatform()
     {
@@ -130,6 +131,8 @@ public class Ball : MonoBehaviour
         started = false;
         rb.velocity = new Vector2(0, 0); // Vector2.zero
     }
+
+    
 
     public void Dublicate()
     {
@@ -162,7 +165,10 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) //Прикрепляет мяч к платформе
     {
-        ExplodingBall();//если explodeBall == true, то выполняется
+        if (collision.gameObject.CompareTag("Block"))
+        { 
+            ExplodingBall();//если explodeBall == true, то выполняется
+        }
 
         if (collision.gameObject.CompareTag("Platform") && stickyBall == true) //можно collision.gameObject.tag == "name"
         {

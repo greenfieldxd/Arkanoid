@@ -16,9 +16,7 @@ public class PickUpExplodeBall : MonoBehaviour
 
         foreach (Ball ball in balls)
         {
-            ball.ModifyScale(1.25f);
-            ball.ModifySpeed(1.25f);
-            ball.ModifyTrailBall(Color.green, Color.yellow, Color.green, 0.4f);
+            ball.ModifyTrailBall(Color.yellow, Color.green, 0.4f);
             ball.MakeBallExplode();
         }
     }
