@@ -12,12 +12,14 @@ public class Ball : MonoBehaviour
     bool explodeBall;//Взрывной мяч
     bool started;//Старт мяча
 
+    public GameObject ball;//Объект типа Мяч
+    public GameObject normalTrail;
+    public GameObject explodeTrail;
 
     Platform platform;
     Rigidbody2D rb;
     GameManager gm;
-
-    public GameObject ball;//Объект типа Мяч
+    AudioSource audio;
 
     Vector3 ballOffset;
 
@@ -40,14 +42,7 @@ public class Ball : MonoBehaviour
         transform.localScale = transform.localScale * modificator;
     }
 
-    public void ModifyTrailBall(Color colorStartTrail, Color colorEndTrail, float timeTrail)
-    {
-        TrailRenderer newTrail = GetComponentInChildren<TrailRenderer>();
-        
-        newTrail.time = timeTrail;
-        newTrail.startColor = colorStartTrail;
-        newTrail.endColor = colorEndTrail;
-    }
+   
 
     //Делаем мяч липким
     public void MakeSticky() 
@@ -59,8 +54,10 @@ public class Ball : MonoBehaviour
     public void MakeBallExplode()
     {
         explodeBall = true;
-        //Если мяч взрывной выключаю через заданное время
-        //Надо сделать чтобы цвет Trail становился нормальным
+        normalTrail.SetActive(false);
+        explodeTrail.SetActive(true);
+
+        //выключаю через заданное время
         Invoke("OffBallExplode", explodeTime);
         
     }
@@ -69,11 +66,14 @@ public class Ball : MonoBehaviour
     public void OffBallExplode()
     {
         explodeBall = false;
+        normalTrail.SetActive(true);
+        explodeTrail.SetActive(false);
     }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>(); // найти компонет Rigitbody2D на том же гейм обжекте
+        audio = GetComponent<AudioSource>();
         started = false; 
     }
 
@@ -82,6 +82,7 @@ public class Ball : MonoBehaviour
 
         platform = FindObjectOfType<Platform>(); //Найти Platform на сцене
         gm = FindObjectOfType<GameManager>();
+
 
         
 
@@ -164,6 +165,8 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) //Прикрепляет мяч к платформе
     {
+        audio.Play();
+
         if (collision.gameObject.CompareTag("Block"))
         { 
             ExplodingBall();//если explodeBall == true, то выполняется

@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     int blocksNumber;
+    public float nextLevelDelay = 1;
     SceneLoader sceneLoader;
 
     
@@ -28,9 +29,14 @@ public class LevelManager : MonoBehaviour
 
         if (blocksNumber <= 0)
         {
-            sceneLoader.LoadNextLevel(); //Load next Scene
-
-
+            //Time.timeScale = 0.2f; как вариант
+            Invoke(nameof(LoadNextLevel), nextLevelDelay);
         }
+    }
+
+    private void LoadNextLevel()
+    {
+        sceneLoader.LoadNextLevel(); //Load next Scene
+
     }
 }
