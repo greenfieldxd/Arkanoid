@@ -58,7 +58,7 @@ public class Block : MonoBehaviour
         }
     }
 
-    private void DestroyBlock() //Функция уничтожение блока
+    public void DestroyBlock() //Функция уничтожение блока
     {
         Destroy(gameObject);
         CreatePickUpWithChance();// Создание PickUp если выпал шанс

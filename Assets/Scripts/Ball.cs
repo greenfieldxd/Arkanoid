@@ -59,6 +59,10 @@ public class Ball : MonoBehaviour
     public void MakeBallExplode()
     {
         explodeBall = true;
+        //Если мяч взрывной выключаю через заданное время
+        //Надо сделать чтобы цвет Trail становился нормальным
+        Invoke("OffBallExplode", explodeTime);
+        
     }
 
     //Выключаем взрывной мяч
@@ -97,12 +101,7 @@ public class Ball : MonoBehaviour
             LockBallToPlatform();
         }
 
-        //Если мяч взрывной выключаю через заданное время
-        //Надо сделать чтобы цвет Trail становился нормальным
-        if (explodeBall)
-        {
-            Invoke("OffBallExplode", explodeTime);
-        }
+       
 
     }
 
@@ -157,7 +156,7 @@ public class Ball : MonoBehaviour
             foreach (Collider2D objectI in objectsInRadius)
             {
                 Block block = objectI.gameObject.GetComponent<Block>();
-                Destroy(block.gameObject);
+                block.DestroyBlock();
             }
 
         }
