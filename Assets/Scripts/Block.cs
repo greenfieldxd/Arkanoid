@@ -19,6 +19,9 @@ public class Block : MonoBehaviour
     public bool isExploding;// взрывной или нет
     
     public GameObject[] pickUp;//prefab of pickUp to create when block destroy
+    public AudioClip destroySound;
+    public GameObject destroyFX;
+
 
 
     LevelManager levelManager;
@@ -60,6 +63,10 @@ public class Block : MonoBehaviour
 
     public void DestroyBlock() //Функция уничтожение блока
     {
+        AudioSource audio = FindObjectOfType<AudioSource>();
+        audio.PlayOneShot(destroySound);
+        DestroyFX();
+
         Destroy(gameObject);
         CreatePickUpWithChance();// Создание PickUp если выпал шанс
         Explode();// Взрыв, если он возможен у блока
@@ -101,6 +108,17 @@ public class Block : MonoBehaviour
                     block.gameObject.SetActive(false);             
                 }
             }
+        }
+    }
+
+    void DestroyFX()
+    {
+        if (destroyFX != null)
+        {
+            Vector3 fxPosition = transform.position;
+
+            GameObject newObject = Instantiate(destroyFX, fxPosition, Quaternion.identity);
+            Destroy(newObject, 5f);
         }
     }
 

@@ -19,7 +19,7 @@ public class Ball : MonoBehaviour
     Platform platform;
     Rigidbody2D rb;
     GameManager gm;
-    AudioSource audio;
+    AudioSource sound;
 
     Vector3 ballOffset;
 
@@ -73,7 +73,7 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>(); // найти компонет Rigitbody2D на том же гейм обжекте
-        audio = GetComponent<AudioSource>();
+        sound = GetComponent<AudioSource>();
         started = false; 
     }
 
@@ -165,7 +165,7 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision) //Прикрепляет мяч к платформе
     {
-        audio.Play();
+        sound.Play();
 
         if (collision.gameObject.CompareTag("Block"))
         { 

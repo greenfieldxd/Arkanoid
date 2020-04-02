@@ -13,14 +13,23 @@ public class GameResult : MonoBehaviour
     
     void Start()
     {
+
         gm = FindObjectOfType<GameManager>();
+        int newScore = gm.score;
+        int bestScore = PlayerPrefs.GetInt("BestScore", 0);
+
+        if (newScore > bestScore)
+        {
+            PlayerPrefs.SetInt("BestScore", newScore);
+        }
+
         if(gm.gameResult == true)
         {
-            endText.text = "Ты выиграл, твои очки составили: " + gm.score;
+            endText.text = "Ты выиграл, твои очки составили: " + newScore;
         }
         else
         {
-            endText.text = "Ты проиграл, твои очки составили: " + gm.score;
+            endText.text = "Ты проиграл, твои очки составили: " + newScore;
         }
     }
 

@@ -117,6 +117,8 @@ MonoBehaviour:
   - {fileID: 6038227946716759749, guid: 2406bac99b36a1c4e9446115cdca07e1, type: 3}
   - {fileID: 6038227946716759749, guid: ba083ca9caacb454bbe1430c1f8b3dcc, type: 3}
   - {fileID: 6038227946716759749, guid: eba5514f4a40f5c40891524e419a04a3, type: 3}
+  destroySound: {fileID: 8300000, guid: 8cbb1a78e53b75a4d89b2799fbf3d122, type: 3}
+  destroyFX: {fileID: 1750940742320366, guid: 2be2d2e43df66fc45b1656613d11ac4e, type: 3}
 --- !u!58 &4286647711317281560
 CircleCollider2D:
   m_ObjectHideFlags: 0
